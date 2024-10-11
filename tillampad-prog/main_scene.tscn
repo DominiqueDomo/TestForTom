@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bo2qpnjmk5fnf"]
+
+[ext_resource type="PackedScene" uid="uid://rq35qc4y1vf1" path="res://player.tscn" id="2_kl1tm"]
+[ext_resource type="PackedScene" uid="uid://773ybbf5untw" path="res://map.tscn" id="2_mpnko"]
+[ext_resource type="PackedScene" uid="uid://b7cuvb6lu136f" path="res://gentleman.tscn" id="3_j2kp6"]
+[ext_resource type="Script" path="res://main_scene.gd" id="4_d2p07"]
+
+[node name="Node2D" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("4_d2p07")
+
+[node name="TileMap" parent="." instance=ExtResource("2_mpnko")]
+position = Vector2(192, 48)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_kl1tm")]
+position = Vector2(263, 221)
+
+[node name="CharacterBody2D2" parent="." instance=ExtResource("3_j2kp6")]
+position = Vector2(446, 177)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+y_sort_enabled = true
+position = Vector2(328, 176)
+zoom = Vector2(2, 2)
