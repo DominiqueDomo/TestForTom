@@ -43,6 +43,3 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_just_released("move_right2"):
 		_animated_sprite.play("idle_E")
 		
-
-
-
