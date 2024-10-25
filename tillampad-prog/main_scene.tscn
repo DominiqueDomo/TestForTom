@@ -1,27 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://bo2qpnjmk5fnf"]
+[gd_scene load_steps=7 format=3 uid="uid://bo2qpnjmk5fnf"]
 
 [ext_resource type="PackedScene" uid="uid://rq35qc4y1vf1" path="res://player.tscn" id="2_kl1tm"]
 [ext_resource type="PackedScene" uid="uid://773ybbf5untw" path="res://map.tscn" id="2_mpnko"]
 [ext_resource type="PackedScene" uid="uid://b7cuvb6lu136f" path="res://gentleman.tscn" id="3_j2kp6"]
 [ext_resource type="Script" path="res://main_scene.gd" id="4_d2p07"]
+[ext_resource type="Script" path="res://enemy_counter.gd" id="5_bxob5"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="Theme" id="Theme_xudge"]
+default_font_size = 200
+
+[node name="Main" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("4_d2p07")
 
 [node name="TileMap" parent="." instance=ExtResource("2_mpnko")]
 position = Vector2(192, 48)
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_kl1tm")]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.019
+autostart = true
+
+[node name="Player" parent="." instance=ExtResource("2_kl1tm")]
 position = Vector2(263, 221)
 
-[node name="CharacterBody2D2" parent="." instance=ExtResource("3_j2kp6")]
+[node name="Gentleman" parent="." instance=ExtResource("3_j2kp6")]
 position = Vector2(446, 177)
-
-[node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 y_sort_enabled = true
-position = Vector2(328, 176)
+position = Vector2(332, 177)
 zoom = Vector2(2, 2)
+
+[node name="EnemyCounter" type="Label" parent="."]
+z_index = 1
+y_sort_enabled = true
+offset_left = 47.0
+offset_top = 18.0
+offset_right = 1825.0
+offset_bottom = 291.0
+scale = Vector2(0.08, 0.08)
+theme = SubResource("Theme_xudge")
+script = ExtResource("5_bxob5")

@@ -308,14 +308,14 @@ size = Vector2(13, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6k520"]
 size = Vector2(13, 17)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Gentleman" type="CharacterBody2D"]
 y_sort_enabled = true
 script = ExtResource("1_6tcbb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_qulg0")
-animation = &"idle_N"
+animation = &"idle_S"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 y_sort_enabled = true

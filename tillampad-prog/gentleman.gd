@@ -2,13 +2,10 @@ extends CharacterBody2D
 
 @onready var _animated_sprite = $AnimatedSprite2D
 
-const SPEED = 100.0
+const SPEED = 95.0
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("move_left2", "move_right2", "move_up2", "move_down2")
-	#var direction = Vector2(0, 0)
-	#direction.x = Input.get_axis("move_left","move_right")
-	#direction.y = Input.get_axis("move_up","move_down")
 
 	velocity = direction * SPEED
 	move_and_slide()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cc30ng1ijpty2"]
+[gd_scene load_steps=10 format=3 uid="uid://cc30ng1ijpty2"]
 
 [ext_resource type="Script" path="res://enemy.gd" id="1_4f7wi"]
 [ext_resource type="Texture2D" uid="uid://ct66n84csb4n7" path="res://assets/custom_sprites-sheet.png" id="1_ki36x"]
+[ext_resource type="Texture2D" uid="uid://wj2cjvbc3t6b" path="res://assets/orange_explosion_35.png" id="3_frk45"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n4kor"]
 atlas = ExtResource("1_ki36x")
@@ -21,19 +22,40 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pb1p2"]
 size = Vector2(13, 17)
 
-[node name="Area2D" type="Area2D"]
+[sub_resource type="Curve" id="Curve_8bhhm"]
+_data = [Vector2(0, 0.252747), 0.0, 0.0, 0, 0, Vector2(1, 0.252747), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_cotq3"]
+curve = SubResource("Curve_8bhhm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_du5w2"]
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_cotq3")
+
+[node name="Enemy" type="Area2D"]
 y_sort_enabled = true
+position = Vector2(0, -9)
 collision_layer = 2
 script = ExtResource("1_4f7wi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_0hb5h")
-offset = Vector2(0, -9)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 y_sort_enabled = true
-position = Vector2(-0.5, -6.5)
+position = Vector2(-0.5, 2.5)
 shape = SubResource("RectangleShape2D_pb1p2")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+process_material = SubResource("ParticleProcessMaterial_du5w2")
+texture = ExtResource("3_frk45")
+lifetime = 0.1
+fixed_fps = 60
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
